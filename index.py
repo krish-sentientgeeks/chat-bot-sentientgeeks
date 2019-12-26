@@ -67,23 +67,26 @@ def send_message():
         socketId = request.form['socketId']
     except KeyError:
         socketId = ''
-        
-    message = request.form['message']
-    project_id = "chatbot-xkucfe"
-    fulfillment_text = detect_intent_texts(project_id, "unique", message, 'en')
-    response_text = { "message":  fulfillment_text }
+    try:
+        message = request.form['message']
+        project_id = "chatbot-xkucfe"
+        fulfillment_text = detect_intent_texts(project_id, "unique", message, 'en')
+        response_text = { "message":  fulfillment_text }
 
-    pusher_client.trigger(
-        'movie_bot', 
-        'new_message', 
-        {
-            'human_message': message, 
-            'bot_message': fulfillment_text,
-        },
-        socketId
-    )
+        pusher_client.trigger(
+            'movie_bot', 
+            'new_message', 
+            {
+                'human_message': message, 
+                'bot_message': fulfillment_text,
+            },
+            socketId
+        )
+        return jsonify(response_text)
+    except Exception as e:
+         return jsonify(e)
                         
-    return jsonify(response_text)
+    
 
 # run Flask app
 if __name__ == "__main__":
