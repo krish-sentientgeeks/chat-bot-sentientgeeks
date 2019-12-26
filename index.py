@@ -9,10 +9,14 @@ app = Flask(__name__)
 
 # initialize Pusher
 pusher_client = pusher.Pusher(
-    app_id=os.getenv('PUSHER_APP_ID'),
-    key=os.getenv('PUSHER_KEY'),
-    secret=os.getenv('PUSHER_SECRET'),
-    cluster=os.getenv('PUSHER_CLUSTER'),
+    # app_id=os.getenv('PUSHER_APP_ID'),
+    # key=os.getenv('PUSHER_KEY'),
+    # secret=os.getenv('PUSHER_SECRET'),
+    # cluster=os.getenv('PUSHER_CLUSTER'),
+    app_id="921020",
+    key="04a08fa486bc58436a1f",
+    secret="fe86fa8e0f371a3f2b94",
+    cluster="ap2",
     ssl=True)
 
 @app.route('/')
@@ -25,7 +29,8 @@ def get_movie_detail():
     
     try:
         movie = data['queryResult']['parameters']['movie']
-        api_key = os.getenv('OMDB_API_KEY')
+        # api_key = os.getenv('OMDB_API_KEY')
+        api_key="a8a0932"
         
         movie_detail = requests.get('http://www.omdbapi.com/?t={0}&apikey={1}'.format(movie, api_key)).content
         movie_detail = json.loads(movie_detail)
@@ -64,7 +69,7 @@ def send_message():
         socketId = ''
         
     message = request.form['message']
-    project_id = os.getenv('DIALOGFLOW_PROJECT_ID')
+    project_id = "chatbot-xkucfe"
     fulfillment_text = detect_intent_texts(project_id, "unique", message, 'en')
     response_text = { "message":  fulfillment_text }
 
