@@ -238,7 +238,7 @@ yarl==1.4.2
 zict==1.0.0
 zipp==0.6.0
 alabaster==0.7.12
-anaconda-client==1.7.2
+
 anaconda-navigator==1.9.7
 anaconda-project==0.8.3
 asn1crypto==1.0.1
@@ -477,7 +477,7 @@ zict==1.0.0
 zipp==0.6.0
 aiohttp==3.6.2
 alabaster==0.7.12
-anaconda-client==1.7.2
+
 anaconda-navigator==1.9.7
 anaconda-project==0.8.3
 asn1crypto==1.0.1
@@ -716,7 +716,7 @@ zict==1.0.0
 zipp==0.6.0
 aiohttp==3.6.2
 alabaster==0.7.12
-anaconda-client==1.7.2
+
 anaconda-navigator==1.9.7
 anaconda-project==0.8.3
 asn1crypto==1.0.1
