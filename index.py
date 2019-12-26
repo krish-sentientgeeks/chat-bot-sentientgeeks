@@ -63,9 +63,9 @@ def detect_intent_texts(project_id, session_id, text, language_code):
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
-    return {
-        "message": "OK",
-    }
+    return jsonify({"message": "OK"})
+        
+   
     '''try:
         socketId = request.form['socketId']
     except KeyError:
