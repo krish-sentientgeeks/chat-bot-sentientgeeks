@@ -63,7 +63,10 @@ def detect_intent_texts(project_id, session_id, text, language_code):
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
-    try:
+    return {
+        "message": "OK",
+    }
+    '''try:
         socketId = request.form['socketId']
     except KeyError:
         socketId = ''
@@ -84,7 +87,7 @@ def send_message():
         )
         return jsonify(response_text)
     except Exception as e:
-         return jsonify(e)
+         return jsonify(e)'''
                         
     
 
