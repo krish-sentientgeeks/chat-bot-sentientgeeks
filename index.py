@@ -49,17 +49,21 @@ def get_movie_detail():
     return jsonify(reply)
 
 def detect_intent_texts(project_id, session_id, text, language_code):
-    session_client = dialogflow.SessionsClient()
-    session = session_client.session_path(project_id, session_id)
-    
-    if text:
-        text_input = dialogflow.types.TextInput(
-            text=text, language_code=language_code)
-        query_input = dialogflow.types.QueryInput(text=text_input)
-        response = session_client.detect_intent(
-            session=session, query_input=query_input)
+    try:
+        session_client = dialogflow.SessionsClient()
+        session = session_client.session_path(project_id, session_id)
         
-        return response.query_result.fulfillment_text
+        if text:
+            text_input = dialogflow.types.TextInput(
+                text=text, language_code=language_code)
+            query_input = dialogflow.types.QueryInput(text=text_input)
+            response = session_client.detect_intent(
+                session=session, query_input=query_input)
+            
+            return response.query_result.fulfillment_text
+    except Exception as e:
+        return e
+    
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
@@ -85,10 +89,10 @@ def send_message():
             },
             socketId
         )
-        # return jsonify(response_text)
+        return jsonify(response_text)
     except Exception as e:
          return jsonify(e)
-    return jsonify(response_text)                    
+                        
     
 
 # run Flask app

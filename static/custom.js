@@ -27,7 +27,7 @@ channel.bind('new_message', function(data) {
 
 $(function() {
     function submit_message(message) {
- console.log(message);
+
         $.post( "/send_message", {
             message: message, 
             socketId: pusher.connection.socket_id
