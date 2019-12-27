@@ -78,8 +78,8 @@ def send_message():
     try:
         message = request.form['message']
         project_id = "chatbot-xkucfe"
-        #fulfillment_text = detect_intent_texts(project_id, "unique", message, 'en')
-        response_text = { "message":  "test" }
+        fulfillment_text = detect_intent_texts(project_id, "unique", message, 'en')
+        response_text = { "message":  fulfillment_text }
 
         # pusher_client.trigger(
         #     'movie_bot', 
