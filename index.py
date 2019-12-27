@@ -69,7 +69,7 @@ def detect_intent_texts(project_id, session_id, text, language_code):
 def send_message():
     #return jsonify({"message": "OK"})
         
-   
+    response_text={"message":  "abc"}
     try:
         socketId = request.form['socketId']
     except KeyError:
@@ -89,9 +89,10 @@ def send_message():
             },
             socketId
         )
-        return jsonify(response_text)
+        #return jsonify(response_text)
     except Exception as e:
-         return jsonify(e)
+         response_text = " "+e
+    return jsonify(response_text)
                         
     
 
