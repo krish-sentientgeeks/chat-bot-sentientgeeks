@@ -49,6 +49,7 @@ def get_movie_detail():
     return jsonify(reply)
 
 def detect_intent_texts(project_id, session_id, text, language_code):
+    text_output = "ijs"
     try:
         session_client = dialogflow.SessionsClient()
         session = session_client.session_path(project_id, session_id)
@@ -60,10 +61,10 @@ def detect_intent_texts(project_id, session_id, text, language_code):
             response = session_client.detect_intent(
                 session=session, query_input=query_input)
             
-            return response.query_result.fulfillment_text
+            text_output = response.query_result.fulfillment_text
     except Exception as e:
-        return e
-    
+        text_output =  e
+    return text_output
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
